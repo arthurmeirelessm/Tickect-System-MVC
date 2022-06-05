@@ -8,5 +8,10 @@ namespace Tickect_System_MVC.Controllers
         {
             return View();
         }
+        
+        public IActionResult RegisterUser()
+        {
+            return View();
+        }
     }
 }

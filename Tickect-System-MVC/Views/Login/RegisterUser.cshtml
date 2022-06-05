@@ -1,0 +1,53 @@
+﻿@using Tickect_System_MVC.Enums
+@model UserModel
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutWithoutUserLoggedLoginRegisterUser";
+}
+
+<br /> 
+
+<div class="text-center">
+    <h1>Registration user</h1>
+</div>
+
+<br />
+
+
+<form asp-controller="Login" asp-action="CreateUser" method="post">
+
+    <div class="form-group">
+        <input type="text" asp-for="Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+
+    <div class="form-group">
+        <input type="email" asp-for="Email" class="form-control" id="exampleInputPassword1" placeholder="Enter e-mail">
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+
+    <div class="form-group">
+        <input type="number" asp-for="CPFNumber" class="form-control" id="exampleInputCPF1" placeholder="Enter CPF">
+        @Html.ValidationMessageFor(x => x.CPFNumber)
+    </div>
+
+
+    <div class="form-group">
+        <select asp-for="UserType" class="form-control">
+            <option value="">Select</option>
+            <option value="@ProfileType.ADM">Administrator</option>
+            <option value="@ProfileType.USERDEFAULT">Default user</option>
+        </select>
+        @Html.ValidationMessageFor(x => x.UserType)
+    </div>
+
+    <div class="form-group">
+        <input type="password" asp-for="Password" class="form-control" id="exampleInputPassword1" placeholder="Enter user password">
+        @Html.ValidationMessageFor(x => x.Password)
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Add</button>
+    <a class="btn alert-secondary" asp-controller="Login" asp-action="Index" role="button">Return</a>
+</form>
