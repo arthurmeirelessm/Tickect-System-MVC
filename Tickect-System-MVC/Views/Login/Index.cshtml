@@ -1,11 +1,8 @@
-﻿
+﻿@model UserLoginModel
 @{
     ViewData["Title"] = "Home Page";
     Layout = "_LayoutWithoutUserLogged";
 }
-
-
-
 
 
 @if (TempData["MessageSuccess"] is not null)
@@ -13,7 +10,7 @@
     <div class="alert alert-success" role="alert">
         <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
         @TempData["MessageSuccess"]
-    </div>rg
+    </div>
 }
 
 @if (TempData["MessageFailed"] is not null)
@@ -46,13 +43,11 @@
               <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
               <div class="form-outline form-white mb-4">
-                <input type="email" asp-for="Email" id="typeEmailX" class="form-control form-control-lg" />
-                <label class="form-label" for="typeEmailX">Email</label>
+                <input type="email" asp-for="Email" id="typeEmailX" class="form-control form-control-lg" placeholder="Email" />
               </div>
 
               <div class="form-outline form-white mb-4">
-                <input type="password" asp-for="Password" id="typePasswordX" class="form-control form-control-lg" />
-                <label class="form-label" for="typePasswordX">Password</label>
+                <input type="password" asp-for="Password" id="typePasswordX" class="form-control form-control-lg" placeholder="Password"/>
               </div>
 
               <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
