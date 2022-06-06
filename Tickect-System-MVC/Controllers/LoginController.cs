@@ -30,16 +30,16 @@ namespace Tickect_System_MVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _userRepository.CreateUserinDataBase(user);
+                    _userRepository.CreateUserInDataBase(user);
                     TempData["MessageSuccess"] = "User created";
                     return View("Index");
                 }
-                TempData["MessageFailed"] = $"Ops, user not was created.";
+                TempData["MessageFailed"] = "Ops, user not was created.";
                 return View("Index");
             }
             catch (System.Exception error)
             {
-                TempData["MessageFailedForError"] = error.Message;
+                TempData["MessageFailed"] = error.Message;
                 return View("Index");
             }
 
