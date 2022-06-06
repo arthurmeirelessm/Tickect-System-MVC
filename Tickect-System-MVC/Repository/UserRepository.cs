@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Tickect_System_MVC.Data;
 using Tickect_System_MVC.Models;
@@ -44,6 +45,20 @@ namespace Tickect_System_MVC.Repository
                 return comparateLogin;
             }
             throw new Exception("You are not registered here, try to register");
+        }
+
+        public List<UserModel> SeachAll()
+        {
+            return _dataContext.Users.ToList(); 
+        }
+
+        public UserModel ConvertPasswordToId(UserLoginModel userLoginModel)
+        { 
+            var convertion = _dataContext.Users.FirstOrDefault(x => x.Password == userLoginModel.Password);
+            if (convertion is not null)
+            {
+                return 
+            }
         }
     }
 }

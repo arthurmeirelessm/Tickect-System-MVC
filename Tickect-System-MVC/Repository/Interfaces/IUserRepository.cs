@@ -1,4 +1,5 @@
-﻿using Tickect_System_MVC.Models;
+﻿using System.Collections.Generic;
+using Tickect_System_MVC.Models;
 
 namespace Tickect_System_MVC.Repository
 {
@@ -8,6 +9,10 @@ namespace Tickect_System_MVC.Repository
 
         public UserModel ComparateIsCpfIsSame(UserModel user);
 
-        public UserModel LoginValidation (UserLoginModel user);
+        public UserModel LoginValidation (UserLoginModel userLoginModel);
+
+        public List<UserModel> SeachAll();
+
+        public UserModel ConvertPasswordToId(UserLoginModel userLoginModel);
     }
 }

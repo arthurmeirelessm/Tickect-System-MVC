@@ -6,13 +6,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Tickect_System_MVC.Models;
+using Tickect_System_MVC.Repository;
 
 namespace Tickect_System_MVC.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        private readonly IUserRepository _userRepository;
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -20,7 +21,8 @@ namespace Tickect_System_MVC.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<UserModel> user = _userRepository.SeachAll();
+            return View(user);
         }
 
         public IActionResult Privacy()
