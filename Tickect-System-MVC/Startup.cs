@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Tickect_System_MVC.Data;
+using Tickect_System_MVC.Repository;
 
 namespace Tickect_System_MVC
 {
@@ -28,6 +29,7 @@ namespace Tickect_System_MVC
             services.AddControllersWithViews();
             services.AddEntityFrameworkSqlServer()
                  .AddDbContext<DataContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
