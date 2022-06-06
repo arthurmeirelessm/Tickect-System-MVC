@@ -2,7 +2,7 @@
 
 namespace Tickect_System_MVC.Helpers
 {
-    public interface ISession
+    public interface ISessionUser
     {
         public void CreateSessionOfUser(UserModel user);
         public void RemoveSessionOfUser();

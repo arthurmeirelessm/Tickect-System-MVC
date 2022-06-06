@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Tickect_System_MVC.Helpers;
 using Tickect_System_MVC.Models;
 using Tickect_System_MVC.Repository;
 
@@ -8,9 +9,9 @@ namespace Tickect_System_MVC.Controllers
     public class LoginController : Controller
     {
         private readonly IUserRepository _userRepository;
-        private readonly ISession _session;
+        private readonly ISessionUser _session;
 
-        public LoginController(IUserRepository userRepository, ISession session)
+        public LoginController(IUserRepository userRepository, ISessionUser session)
         {
             _userRepository = userRepository;
             _session = session;
@@ -20,48 +21,7 @@ namespace Tickect_System_MVC.Controllers
         {
             return View();
         }
-
-        public IActionResult RegisterUser()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CreateUser(UserModel user)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    var nameAccepted = user.Name.Length;
-                    var cpfAccepted = user.CPFNumber.Length;
-                    if (nameAccepted > 4 && nameAccepted < 30)
-                    {
-                        if (cpfAccepted == 11)
-                        {
-                             var createSession = _session.crea
-                            _userRepository.CreateUserInDataBase(user);
-                            TempData["MessageSuccess"] = "User created";
-                            return View("Index");
-                        }
-                        else
-                        {
-                            TempData["MessageFailedForCpf"] = "Invalid cpf";
-                            return View("RegisterUser");
-                        }
-                    }
-                    TempData["MessageFailedForCharacter"] = "Number of characters in the name must be between 4 and 30";
-                    return View("RegisterUser");
-                }
-                return View("RegisterUser");
-            }
-            catch (System.Exception error)
-            {
-                TempData["MessageFailed"] = error.Message;
-                return View("Index");
-            }
-
-        }
+      
 
         public IActionResult EnterLoginInApplication(UserLoginModel userLoginModel)
         {

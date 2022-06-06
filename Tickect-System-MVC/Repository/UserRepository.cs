@@ -46,19 +46,5 @@ namespace Tickect_System_MVC.Repository
             }
             throw new Exception("You are not registered here, try to register");
         }
-
-        public List<UserModel> SeachAll()
-        {
-            return _dataContext.Users.ToList(); 
-        }
-
-        public UserModel ConvertPasswordToId(UserLoginModel userLoginModel)
-        { 
-            var convertion = _dataContext.Users.FirstOrDefault(x => x.Password == userLoginModel.Password);
-            if (convertion is not null)
-            {
-                return 
-            }
-        }
     }
 }

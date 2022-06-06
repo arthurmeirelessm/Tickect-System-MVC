@@ -4,11 +4,11 @@ using Tickect_System_MVC.Models;
 
 namespace Tickect_System_MVC.Helpers
 {
-    public class Session : ISession
+    public class SessionUser : ISessionUser
     {
         private readonly IHttpContextAccessor _iHttpContextAccessor;
 
-        public Session(IHttpContextAccessor iHttpContextAccessor)
+        public SessionUser(IHttpContextAccessor iHttpContextAccessor)
         {
             _iHttpContextAccessor = iHttpContextAccessor;
         }

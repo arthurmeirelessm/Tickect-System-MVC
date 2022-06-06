@@ -2,7 +2,7 @@
 @model UserModel
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Register user";
     Layout = "_LayoutWithoutUserLoggedLoginRegisterUser";
 }
 
@@ -34,7 +34,7 @@
 
 
 
-<form asp-controller="Login" asp-action="CreateUser" method="post">
+<form asp-controller="User" asp-action="CreateUser" method="post">
 
     <div class="form-group">
         <input type="text" asp-for="Name" class="form-control" id="exampleInputEmail1" placeholder="Enter name">
@@ -69,5 +69,5 @@
 
     <button type="submit" class="btn btn-primary">Add</button>
 
-    <a class="btn alert-secondary" asp-controller="Login" asp-action="Index" role="button">Return</a>
+    <a class="btn alert-secondary" asp-controller="User" asp-action="Index" role="button">Return</a>
 </form>
