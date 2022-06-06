@@ -15,10 +15,29 @@
 <br />
 
 
+@if (TempData["MessageFailedForCharacter"] is not null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-dark btn-sm close-alert" arial-label="Close">x</button>
+        @TempData["MessageFailedForCharacter"]
+    </div>
+}
+
+
+@if (TempData["MessageFailedForCpf"] is not null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-dark btn-sm close-alert" arial-label="Close">x</button>
+        @TempData["MessageFailedForCpf"]
+    </div>
+}
+
+
+
 <form asp-controller="Login" asp-action="CreateUser" method="post">
 
     <div class="form-group">
-        <input type="text" asp-for="Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+        <input type="text" asp-for="Name" class="form-control" id="exampleInputEmail1" placeholder="Enter name">
         @Html.ValidationMessageFor(x => x.Name)
     </div>
 

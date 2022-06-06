@@ -30,12 +30,26 @@ namespace Tickect_System_MVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _userRepository.CreateUserInDataBase(user);
-                    TempData["MessageSuccess"] = "User created";
-                    return View("Index");
+                    var nameAccepted = user.Name.Length;
+                    var cpfAccepted = user.CPFNumber.Length;
+                    if (nameAccepted > 4 && nameAccepted < 30)
+                    {
+                        if (cpfAccepted == 11)
+                        {
+                            _userRepository.CreateUserInDataBase(user);
+                            TempData["MessageSuccess"] = "User created";
+                            return View("Index");
+                        }
+                        else
+                        {
+                            TempData["MessageFailedForCpf"] = "Invalid cpf";
+                            return View("RegisterUser");
+                        }
+                    }
+                    TempData["MessageFailedForCharacter"] = "Number of characters in the name must be between 4 and 30";
+                    return View("RegisterUser");
                 }
-                TempData["MessageFailed"] = "Ops, user not was created.";
-                return View("Index");
+                return View("RegisterUser");
             }
             catch (System.Exception error)
             {
