@@ -35,5 +35,15 @@ namespace Tickect_System_MVC.Repository
           return _dataContext.Users.FirstOrDefault(x => x.CPFNumber == user.CPFNumber);
         }
 
+        public UserModel LoginValidation(UserLoginModel userLoginModel)
+        {
+            var comparateLogin = _dataContext.Users.FirstOrDefault(x => x.Email == userLoginModel.Email && x.Password == userLoginModel.Password);
+
+            if (comparateLogin is not null)
+            {
+                return comparateLogin;
+            }
+            throw new Exception("You are not registered here, try to register");
+        }
     }
 }

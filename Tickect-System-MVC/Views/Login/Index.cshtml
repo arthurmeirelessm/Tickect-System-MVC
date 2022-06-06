@@ -24,7 +24,7 @@
 
 <br />
 
-<form class="vh-100 gradient-custom">
+<form class="vh-100 gradient-custom"  asp-controller="Login" asp-action="EnterLoginInApplication" >
     <div class="container py-5 h-100">
 
 
@@ -40,10 +40,12 @@
 
                             <div class="form-outline form-white mb-4">
                                 <input type="email" asp-for="Email" id="typeEmailX" class="form-control form-control-lg" placeholder="Email" />
+                                @Html.ValidationMessageFor(x => x.Email)
                             </div>
 
                             <div class="form-outline form-white mb-4">
                                 <input type="password" asp-for="Password" id="typePasswordX" class="form-control form-control-lg" placeholder="Password" />
+                                @Html.ValidationMessageFor(x => x.Password)
                             </div>
                             <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
 

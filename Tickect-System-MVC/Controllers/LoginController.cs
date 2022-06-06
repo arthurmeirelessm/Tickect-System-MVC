@@ -58,5 +58,23 @@ namespace Tickect_System_MVC.Controllers
             }
 
         }
+
+        public IActionResult EnterLoginInApplication(UserLoginModel userLoginModel)
+        {
+            try
+            {
+                var comparateLogin = _userRepository.LoginValidation(userLoginModel);
+                if (comparateLogin is not null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                return View("Index");
+            }
+            catch (System.Exception error)
+            {
+                TempData["MessageFailed"] = error.Message;
+                return View("Index");
+            }
+        }
     }
 }

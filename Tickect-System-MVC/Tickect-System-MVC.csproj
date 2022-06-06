@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\stylesheet\StyleSheetHome.css" />
     <Content Remove="wwwroot\stylesheet\StyleSheetWithoutUserLoggedRegisterUser.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\stylesheet\StyleSheetHome.css" />
     <None Include="wwwroot\stylesheet\StyleSheetWithoutUserLoggedRegisterUser.css" />
     <None Include="wwwroot\stylesheet\StyleSheetWithoutUserLoggedLogin.css" />
   </ItemGroup>

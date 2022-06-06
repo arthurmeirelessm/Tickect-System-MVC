@@ -1,0 +1,10 @@
+﻿header{
+    color: black
+}
+
+body {
+    background-color: black;
+    background-image: url('../Images/So-track-boa-foto-2-mulher.jpg.webp');
+    background-size: cover;
+    font-family: sans-serif;
+}
