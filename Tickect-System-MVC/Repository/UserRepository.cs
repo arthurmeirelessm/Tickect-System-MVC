@@ -19,7 +19,7 @@ namespace Tickect_System_MVC.Repository
         public UserModel CreateUserInDataBase(UserModel user)
         {
 
-            UserModel comparateCpf = ComparateIsCpfIsSame(user);
+            UserModel comparateCpf = ComparateIsCpfIsSame(user.CPFNumber);
             if (comparateCpf is not null)
             {
                 throw new Exception("User already exists");
@@ -31,9 +31,9 @@ namespace Tickect_System_MVC.Repository
 
             return user;
         }
-        public UserModel ComparateIsCpfIsSame(UserModel user)
+        public UserModel ComparateIsCpfIsSame(string cpfUser)
         {
-          return _dataContext.Users.FirstOrDefault(x => x.CPFNumber == user.CPFNumber);
+          return _dataContext.Users.FirstOrDefault(x => x.CPFNumber == cpfUser);
         }
 
         public UserModel LoginValidation(UserLoginModel userLoginModel)

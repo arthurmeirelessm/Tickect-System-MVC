@@ -30,9 +30,11 @@ namespace Tickect_System_MVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (user.Name.Length > 4 && user.Name.Length < 30)
+                    var nameLength = user.Name.Length;
+                    var cpfLength = user.CPFNumber.Length;
+                    if (nameLength > 4 && nameLength < 30)
                     {
-                        if (user.CPFNumber.Length == 11)
+                        if (cpfLength == 11)
                         {
                             _userRepository.CreateUserInDataBase(user);
                             TempData["MessageSuccess"] = "User created";

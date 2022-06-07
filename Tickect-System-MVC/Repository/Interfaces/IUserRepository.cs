@@ -7,7 +7,7 @@ namespace Tickect_System_MVC.Repository
     {
         public UserModel CreateUserInDataBase(UserModel user);
 
-        public UserModel ComparateIsCpfIsSame(UserModel user);
+        public UserModel ComparateIsCpfIsSame(string cpfUser);
 
         public UserModel LoginValidation (UserLoginModel userLoginModel);
 
