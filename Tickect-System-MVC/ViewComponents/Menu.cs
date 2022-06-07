@@ -17,7 +17,7 @@ namespace Tickect_System_MVC.ViewComponents
             }
 
             UserModel user = JsonConvert.DeserializeObject<UserModel>(userSession);
-            return View();
+            return View(user);
         }
 
     }

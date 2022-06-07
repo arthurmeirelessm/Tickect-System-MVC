@@ -20,7 +20,10 @@ namespace Tickect_System_MVC.Controllers
 
         public IActionResult Index()
         {
-           
+            if (_session.GetSessionUser() is not null)
+            {
+                return RedirectToAction("Index", "Home");
+            }  
             return View();
         }
       
@@ -29,10 +32,10 @@ namespace Tickect_System_MVC.Controllers
         {
             try
             {
-                var comparateLogin = _userRepository.LoginValidation(userLoginModel);
+                UserModel comparateLogin = _userRepository.LoginValidation(userLoginModel);
                 if (comparateLogin is not null)
                 {
-                    _session.CreateSessionOfUser(user);
+                    _session.CreateSessionOfUser(comparateLogin);
                     return RedirectToAction("Index", "Home");
                 }
                 return View("Index");
