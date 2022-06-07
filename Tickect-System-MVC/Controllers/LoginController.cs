@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using Tickect_System_MVC.Helpers;
 using Tickect_System_MVC.Models;
 using Tickect_System_MVC.Repository;
@@ -19,6 +20,7 @@ namespace Tickect_System_MVC.Controllers
 
         public IActionResult Index()
         {
+           
             return View();
         }
       
@@ -30,6 +32,7 @@ namespace Tickect_System_MVC.Controllers
                 var comparateLogin = _userRepository.LoginValidation(userLoginModel);
                 if (comparateLogin is not null)
                 {
+                    _session.CreateSessionOfUser(user);
                     return RedirectToAction("Index", "Home");
                 }
                 return View("Index");

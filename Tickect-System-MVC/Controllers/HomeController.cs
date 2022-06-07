@@ -21,7 +21,8 @@ namespace Tickect_System_MVC.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<UserModel> seachAll = _userRepository.SeachAll();
+            return View(seachAll);
         }
 
         public IActionResult Privacy()

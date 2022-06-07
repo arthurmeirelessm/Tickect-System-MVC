@@ -46,5 +46,11 @@ namespace Tickect_System_MVC.Repository
             }
             throw new Exception("You are not registered here, try to register");
         }
+
+        public List<UserModel> SeachAll()
+        {
+            return _dataContext.Users.ToList();
+           
+        }
     }
 }

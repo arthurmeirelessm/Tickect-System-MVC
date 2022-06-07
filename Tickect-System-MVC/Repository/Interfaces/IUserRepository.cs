@@ -10,5 +10,7 @@ namespace Tickect_System_MVC.Repository
         public UserModel ComparateIsCpfIsSame(UserModel user);
 
         public UserModel LoginValidation (UserLoginModel userLoginModel);
+
+        public List <UserModel> SeachAll();
     }
 }

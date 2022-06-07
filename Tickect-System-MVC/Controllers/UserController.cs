@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Tickect_System_MVC.Helpers;
 using Tickect_System_MVC.Models;
 using Tickect_System_MVC.Repository;
 
@@ -8,10 +10,12 @@ namespace Tickect_System_MVC.Controllers
     {
 
         private readonly IUserRepository _userRepository;
+        private readonly ISessionUser _session;
 
-        public UserController(IUserRepository userRepository)
+        public UserController(IUserRepository userRepository, ISessionUser session)
         {
             _userRepository = userRepository;
+            _session = session;
         }
 
         public IActionResult Index()
@@ -26,11 +30,9 @@ namespace Tickect_System_MVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var nameAccepted = user.Name.Length;
-                    var cpfAccepted = user.CPFNumber.Length;
-                    if (nameAccepted > 4 && nameAccepted < 30)
+                    if (user.Name.Length > 4 && user.Name.Length < 30)
                     {
-                        if (cpfAccepted == 11)
+                        if (user.CPFNumber.Length == 11)
                         {
                             _userRepository.CreateUserInDataBase(user);
                             TempData["MessageSuccess"] = "User created";
